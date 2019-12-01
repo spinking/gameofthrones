@@ -1,25 +1,14 @@
 package ru.skillbranch.gameofthrones
 
-import android.app.Application
-import ru.skillbranch.gameofthrones.di.AppComponent
-import timber.log.Timber
-import ru.skillbranch.gameofthrones.di.DaggerAppComponent
-
-class AppConfig: Application(), AppComponent.ComponentProvider {
-
-    override lateinit var appComponent: AppComponent
-    companion object {
-        lateinit var INSTANCE: AppConfig
-            private set
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-        Timber.plant(Timber.DebugTree())
-        INSTANCE = this
-        appComponent = DaggerAppComponent.builder()
-            .application(this)
-            .build()
-        appComponent.inject(this)
-    }
+object AppConfig {
+    val NEED_HOUSES = arrayOf(
+        "House Stark of Winterfell",
+        "House Lannister of Casterly Rock",
+        "House Targaryen of King's Landing",
+        "House Greyjoy of Pyke",
+        "House Tyrell of Highgarden",
+        "House Baratheon of Dragonstone",
+        "House Nymeros Martell of Sunspear"
+    )
+    const val BASE_URL = "https://www.anapioficeandfire.com/api/"
 }

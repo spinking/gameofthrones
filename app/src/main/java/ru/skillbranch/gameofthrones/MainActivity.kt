@@ -1,12 +1,11 @@
 package ru.skillbranch.gameofthrones
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-import android.Manifest
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.ncapdevi.fragnav.FragNavController
+import ru.skillbranch.gameofthrones.ui.MainFragment
 
 
 class MainActivity : BaseActivity(),
@@ -27,7 +26,7 @@ class MainActivity : BaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.savedInstanceState = savedInstanceState
-        AppConfig.INSTANCE.appComponent.inject(activity = this@MainActivity)
+        App.INSTANCE.appComponent.inject(activity = this@MainActivity)
     }
 
     override fun onFragmentTransaction(fragment: Fragment?, transactionType: FragNavController.TransactionType) {
@@ -40,13 +39,7 @@ class MainActivity : BaseActivity(),
         get() = TAB_SIZE
 
     override fun getRootFragment(index: Int): Fragment {
-        when (index) {
-            /*0 -> return FeedFragment()
-            1 -> return SearchFragment()
-            2 -> return MapFragment()
-            3 -> return ChatFragment()
-            4 -> return ProfileFragment()*/
-        }
+        return MainFragment()
         throw IllegalStateException("Undefined index value")
     }
 
