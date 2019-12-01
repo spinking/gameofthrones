@@ -18,8 +18,8 @@ class MainActivity : BaseActivity(),
 
     private val PERMISSIONS_REQUEST = 1
     lateinit var navController: FragNavController
-    private val TAB_SIZE = 5
-    private val START_INDEX = 2
+    private val TAB_SIZE = 1
+    private val START_INDEX = 0
 
     private var savedInstanceState: Bundle? = null
 
@@ -27,6 +27,7 @@ class MainActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         this.savedInstanceState = savedInstanceState
         App.INSTANCE.appComponent.inject(activity = this@MainActivity)
+        startApp()
     }
 
     override fun onFragmentTransaction(fragment: Fragment?, transactionType: FragNavController.TransactionType) {
@@ -40,7 +41,6 @@ class MainActivity : BaseActivity(),
 
     override fun getRootFragment(index: Int): Fragment {
         return MainFragment()
-        throw IllegalStateException("Undefined index value")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

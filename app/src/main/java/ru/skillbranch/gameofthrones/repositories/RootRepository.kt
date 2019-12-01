@@ -3,10 +3,13 @@ package ru.skillbranch.gameofthrones.repositories
 import androidx.annotation.VisibleForTesting
 import ru.skillbranch.gameofthrones.data.local.entities.CharacterFull
 import ru.skillbranch.gameofthrones.data.local.entities.CharacterItem
+import ru.skillbranch.gameofthrones.data.local.entities.House
 import ru.skillbranch.gameofthrones.data.remote.res.CharacterRes
 import ru.skillbranch.gameofthrones.data.remote.res.HouseRes
+import javax.inject.Inject
 
-object RootRepository {
+object RootRepository  {
+
 
     /**
      * Получение данных о всех домах
@@ -14,7 +17,7 @@ object RootRepository {
      */
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     fun getAllHouses(result : (houses : List<HouseRes>) -> Unit) {
-        //TODO implement me
+
     }
 
     /**

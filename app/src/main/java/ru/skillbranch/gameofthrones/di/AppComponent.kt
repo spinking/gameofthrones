@@ -7,11 +7,13 @@ import dagger.Component
 import ru.skillbranch.gameofthrones.App
 import ru.skillbranch.gameofthrones.MainActivity
 import ru.skillbranch.gameofthrones.ui.MainFragment
+import ru.skillbranch.gameofthrones.ui.stark.FragmentStarkList
+import ru.skillbranch.gameofthrones.ui.tyrell.FragmentTyrellList
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [AppModule::class, NetworkModule::class, PresenterModule::class,
-    PreferencesModule::class, RepositoryModule::class, InteractorModule::class])
+    RepositoryModule::class])
 interface AppComponent {
     fun inject(application: App)
 
@@ -33,6 +35,7 @@ interface AppComponent {
 
     //fragment
     fun inject(fragment: MainFragment)
+    fun inject(fragment: FragmentStarkList)
     //fun inject(fragment: BaseGoogleMap)
 
 
