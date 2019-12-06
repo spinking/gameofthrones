@@ -10,6 +10,7 @@ import ru.skillbranch.gameofthrones.App
 import ru.skillbranch.gameofthrones.AppConfig
 import ru.skillbranch.gameofthrones.BaseFragment
 import ru.skillbranch.gameofthrones.R
+import ru.skillbranch.gameofthrones.data.remote.res.CharacterRes
 import ru.skillbranch.gameofthrones.data.remote.res.HouseRes
 import ru.skillbranch.gameofthrones.presentations.stark.IStarkView
 import ru.skillbranch.gameofthrones.presentations.stark.StarkPresenter
@@ -40,13 +41,14 @@ class FragmentStarkList: BaseFragment(), IStarkView {
 
         }
 
-        data_list.layoutManager= LinearLayoutManager(context)
+        data_list.layoutManager = LinearLayoutManager(context)
+        data_list.adapter = adapter
 
-        presenter.updateHouses(AppConfig.NEED_HOUSES.toList())
+       /* presenter.updateHouses(1, 50)*/
 
     }
 
-    override fun showHouses(houses: List<HouseRes>) {
-        adapter.setHouses(houses)
+    override fun showCharacter(char: List<CharacterRes>) {
+        adapter.showCharacters(char)
     }
 }

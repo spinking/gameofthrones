@@ -6,18 +6,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_person.view.*
 import ru.skillbranch.gameofthrones.R
+import ru.skillbranch.gameofthrones.data.remote.res.CharacterRes
 import ru.skillbranch.gameofthrones.data.remote.res.HouseRes
 
 class StarkAdapter(
-    private var personList: MutableList<HouseRes> = mutableListOf(),
+    private var personList: MutableList<CharacterRes> = mutableListOf(),
     private val clickListener: (Int) -> Unit
 ) : RecyclerView.Adapter<StarkAdapter.PersonHolder>() {
-
-    private var houses = mutableListOf<HouseRes>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonHolder {
         return PersonHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_person, parent, false))
     }
+
+
 
     override fun getItemCount() = personList.size
 
@@ -25,21 +26,17 @@ class StarkAdapter(
         holder.bind(personList[position])
     }
 
-    fun setHouses(houses: List<HouseRes>) {
-        this.houses.clear()
-        this.houses.addAll(houses)
-        notifyDataSetChanged()
-    }
-    /*fun addEvents(event: List<EventResponse>){
-        this.event.addAll(event)
-        notifyDataSetChanged()
-    }*/
 
 
     inner class PersonHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(person: HouseRes) {
+        fun bind(person: CharacterRes) {
             itemView.userFullName.text = person.name
-            itemView.userName.text = person.region
+            itemView.userName.text = person.born
         }
+    }
+    fun showCharacters(char: List<CharacterRes>) {
+        this.personList.clear()
+        this.personList.addAll(char)
+        notifyDataSetChanged()
     }
 }
