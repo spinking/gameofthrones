@@ -6,6 +6,14 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/nav_host_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/mainScreenContainer"
         android:layout_width="match_parent"
